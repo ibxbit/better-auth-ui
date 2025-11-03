@@ -1,13 +1,21 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggler";
 import { NavLink } from "./navlink";
 import { Logo } from "./logo";
+import { Button } from "@/components/ui/button";
+import { Search } from 'lucide-react'; 
+import { useCommandPalette } from "./command-palette-context";
 
-export const Navbar = () => {
+
+// Function signature cleaned up
+export const Navbar = (/* No props needed here */) => {
+  const { setOpen } = useCommandPalette()
   return (
     <div className="flex flex-col sticky top-0 bg-background backdrop-blur-md z-30">
-      <nav className="md:grid grid-cols-12 md:border-b top-0 flex items-center justify-between ">
+      <nav className="md:grid grid-cols-12 md:border-b top-0 flex items-center justify-between">
         <Link
           href="/"
           className="md:border-r md:px-5 px-2.5 py-4 text-foreground md:col-span-2 shrink-0 transition-colors md:w-[--fd-sidebar-width]"
@@ -33,7 +41,7 @@ export const Navbar = () => {
             ))}
             <Link
               href="https://github.com/Kinfe123/better-auth-ui"
-              className=" bg-muted/20 border-l ring-0 rounded-none h-14 w-14 shrink-0 flex justify-center items-center"
+              className="bg-muted/20 border-l ring-0 rounded-none h-14 w-14 shrink-0 flex justify-center items-center"
               target="_blank"
             >
               <svg
